@@ -1,26 +1,197 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello World</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #1a1a2e;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-    h1 {
-      color: #eaeaea;
-      font-size: 3rem;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lorena Fotografija | Fotograf za vaše najdraže uspomene</title>
+<meta name="description" content="Lorena Fotografija - fotografiranje novorođenčadi, obitelji i posebnih trenutaka. Studio i vanjska fotografiranja.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>Hello, World! 👋</h1>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#" class="logo">Lorena <span>Fotografija</span></a>
+    <nav class="main-nav">
+      <button class="nav-toggle" aria-label="Otvori izbornik" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul>
+        <li><a href="#pocetna">Početna</a></li>
+        <li><a href="#usluge">Usluge</a></li>
+        <li><a href="#o-meni">O meni</a></li>
+        <li><a href="#galerija">Galerija</a></li>
+        <li><a href="#poklon-bon">Poklon bon</a></li>
+        <li><a href="#kontakt" class="nav-cta">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section id="pocetna" class="hero">
+    <img class="hero-img" src="images/hero.jpg" alt="Lorena Fotografija - naslovna fotografija" data-placeholder-label="Naslovna fotografija&#10;images/hero.jpg&#10;preporučeno: 1920×1080px, uspravno ili vodoravno">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="eyebrow">Lorena Fotografija</p>
+      <h1>Fotograf za vaše <em>najdraže uspomene</em></h1>
+      <a href="#usluge" class="btn btn-light">Saznaj više</a>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="usluge" class="services">
+    <div class="section-head">
+      <p class="eyebrow">Usluge</p>
+      <h2>Trenutci koje želite <em>zauvijek</em> zapamtiti</h2>
+    </div>
+
+    <div class="services-grid">
+      <article class="service-card">
+        <div class="service-img">
+          <img src="images/usluga-novorodencad.jpg" alt="Fotografiranje novorođenčadi" data-placeholder-label="images/usluga-novorodencad.jpg&#10;preporučeno: 1000×1250px">
+        </div>
+        <h3>Novorođenčad</h3>
+        <p>Prvi dani vašeg djeteta prođu brzo. Nježno, strpljivo i s puno ljubavi bilježim te sitne, dragocjene trenutke koji se nikad više neće ponoviti.</p>
+        <a href="#kontakt" class="link-arrow">Rezerviraj termin →</a>
+      </article>
+
+      <article class="service-card">
+        <div class="service-img">
+          <img src="images/usluga-obitelj.jpg" alt="Obiteljsko fotografiranje" data-placeholder-label="images/usluga-obitelj.jpg&#10;preporučeno: 1000×1250px">
+        </div>
+        <h3>Obitelj</h3>
+        <p>Djeca rastu prebrzo, a godine prolaze još brže. Sačuvajmo zajedno opuštene, iskrene i tople trenutke provedene s najbližima.</p>
+        <a href="#kontakt" class="link-arrow">Rezerviraj termin →</a>
+      </article>
+
+      <article class="service-card">
+        <div class="service-img">
+          <img src="images/usluga-trudnice.jpg" alt="Fotografiranje trudnica" data-placeholder-label="images/usluga-trudnice.jpg&#10;preporučeno: 1000×1250px">
+        </div>
+        <h3>Trudnoća</h3>
+        <p>Iščekivanje je posebno vrijeme. Kroz fotografije zabilježimo tu ljepotu i uzbuđenje prije nego što upoznate svog malog junaka ili junakinju.</p>
+        <a href="#kontakt" class="link-arrow">Rezerviraj termin →</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="o-meni" class="about">
+    <div class="about-img">
+      <img src="images/lorena-portret.jpg" alt="Lorena, fotografkinja" data-placeholder-label="images/lorena-portret.jpg&#10;portret fotografkinje&#10;preporučeno: 900×1100px">
+    </div>
+    <div class="about-text">
+      <p class="eyebrow">O meni</p>
+      <h2>Bok, ja sam <em>Lorena</em></h2>
+      <p>Ne volim previše pričati o sebi — puno radije pričam priče kroz fotografiju. Ono što me pokreće jesu ljudi, njihove emocije i mali, naizgled nevažni trenutci koji zapravo grade cijeli jedan život.</p>
+      <p>Specijalizirana sam za fotografiranje beba, djece, trudnica i obitelji. Svako fotografiranje pristupam s puno strpljenja, pažnje za detalje i željom da se osjećate opušteno pred objektivom. Fotografije pažljivo obrađujem kako bi rezultat bio prirodan, topao i vremenski neupitan.</p>
+      <a href="#kontakt" class="btn btn-dark">Kontaktiraj me</a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="cta-banner-content">
+      <h2>Uhvatimo <em>trenutak</em></h2>
+      <p>Zabilježimo zajedno prolazne trenutke koje želite sačuvati zauvijek.</p>
+      <a href="#kontakt" class="btn btn-light">Rezerviraj fotografiranje</a>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="galerija" class="gallery">
+    <div class="section-head">
+      <p class="eyebrow">Galerija</p>
+      <h2>Odabrani <em>radovi</em></h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="images/galerija-01.jpg" alt="Galerija fotografija 1" data-placeholder-label="images/galerija-01.jpg"></div>
+      <div class="gallery-item"><img src="images/galerija-02.jpg" alt="Galerija fotografija 2" data-placeholder-label="images/galerija-02.jpg"></div>
+      <div class="gallery-item"><img src="images/galerija-03.jpg" alt="Galerija fotografija 3" data-placeholder-label="images/galerija-03.jpg"></div>
+      <div class="gallery-item"><img src="images/galerija-04.jpg" alt="Galerija fotografija 4" data-placeholder-label="images/galerija-04.jpg"></div>
+      <div class="gallery-item"><img src="images/galerija-05.jpg" alt="Galerija fotografija 5" data-placeholder-label="images/galerija-05.jpg"></div>
+      <div class="gallery-item"><img src="images/galerija-06.jpg" alt="Galerija fotografija 6" data-placeholder-label="images/galerija-06.jpg"></div>
+      <div class="gallery-item"><img src="images/galerija-07.jpg" alt="Galerija fotografija 7" data-placeholder-label="images/galerija-07.jpg"></div>
+      <div class="gallery-item"><img src="images/galerija-08.jpg" alt="Galerija fotografija 8" data-placeholder-label="images/galerija-08.jpg"></div>
+    </div>
+    <p class="gallery-note">Pratite me na <a href="https://instagram.com" target="_blank" rel="noopener">Instagramu</a> za nove objave.</p>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews">
+    <div class="section-head">
+      <p class="eyebrow">Recenzije</p>
+      <h2>Što kažu <em>klijenti</em></h2>
+    </div>
+    <div class="reviews-grid">
+      <blockquote class="review">
+        <div class="stars">★★★★★</div>
+        <p>„Lorena je predivno uhvatila svaki trenutak s našom bebom. Strpljiva, profesionalna i fotografije su iznad svih očekivanja.“</p>
+        <cite>— Ana K.</cite>
+      </blockquote>
+      <blockquote class="review">
+        <div class="stars">★★★★★</div>
+        <p>„Opuštena atmosfera, prekrasan studio i fotografije koje smo dobili su prava umjetnina. Toplo preporučujem!“</p>
+        <cite>— Marko P.</cite>
+      </blockquote>
+      <blockquote class="review">
+        <div class="stars">★★★★★</div>
+        <p>„Brza dostava obrađenih fotografija i nevjerojatan osjećaj za detalje. Definitivno dolazimo ponovno.“</p>
+        <cite>— Ivana T.</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- GIFT CERTIFICATE -->
+  <section id="poklon-bon" class="gift">
+    <div class="gift-inner">
+      <p class="eyebrow">Poklon bon</p>
+      <h2>Pretvorite najdraže trenutke u <em>uspomene za cijeli život</em></h2>
+      <p>Poklonite fotografiranje nekome dragom — savršen poklon za rođenje bebe, godišnjicu ili posebnu prigodu.</p>
+      <a href="#kontakt" class="btn btn-dark">Naruči poklon bon</a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="kontakt" class="contact">
+    <div class="section-head">
+      <p class="eyebrow">Kontakt</p>
+      <h2>Rezervirajte svoj <em>termin</em></h2>
+    </div>
+    <div class="contact-grid">
+      <form class="contact-form" onsubmit="return false;">
+        <label>Ime i prezime
+          <input type="text" name="name" required>
+        </label>
+        <label>E-mail
+          <input type="email" name="email" required>
+        </label>
+        <label>Poruka
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+        <button type="submit" class="btn btn-dark">Pošalji upit</button>
+      </form>
+      <div class="contact-info">
+        <p><strong>Studio</strong><br>Zagreb, Hrvatska</p>
+        <p><strong>E-mail</strong><br>lorena@lorenafotografija.hr</p>
+        <p><strong>Telefon</strong><br>+385 91 234 5678</p>
+        <p><strong>Instagram</strong><br><a href="https://instagram.com" target="_blank" rel="noopener">@lorenafotografija</a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>&copy; <span id="year"></span> Lorena Fotografija. Sva prava pridržana.</p>
+</footer>
+
+<script src="js/main.js"></script>
 </body>
 </html>
