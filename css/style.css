@@ -408,6 +408,15 @@ section { padding: 5.5rem 0; }
 }
 .contact-info a { color: var(--color-accent); border-bottom: 1px solid var(--color-accent); }
 
+/* Contact section with no form — just centered info */
+.contact-grid.contact-info-only {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  max-width: 480px;
+}
+.contact-info-only .contact-info { text-align: center; }
+.contact-info-only .contact-info p { font-size: 1.05rem; }
+
 /* ---------- Footer ---------- */
 .site-footer {
   text-align: center;
