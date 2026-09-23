@@ -54,3 +54,100 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     }
   });
 });
+
+// Gallery lightbox — click any gallery photo to see it uncropped,
+// full-size, with arrows to browse through the whole gallery.
+const galleryImgs = Array.from(document.querySelectorAll('.gallery-item img'));
+const lightbox = document.getElementById('lightbox');
+if (galleryImgs.length && lightbox) {
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCounter = document.getElementById('lightbox-counter');
+  const btnClose = document.getElementById('lightbox-close');
+  const btnPrev = document.getElementById('lightbox-prev');
+  const btnNext = document.getElementById('lightbox-next');
+  let currentIndex = 0;
+
+  function showImage(index) {
+    currentIndex = (index + galleryImgs.length) % galleryImgs.length;
+    const img = galleryImgs[currentIndex];
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightboxCounter.textContent = `${currentIndex + 1} / ${galleryImgs.length}`;
+  }
+
+  function openLightbox(index) {
+    showImage(index);
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  galleryImgs.forEach((img, index) => {
+    img.addEventListener('click', () => openLightbox(index));
+  });
+
+  btnClose.addEventListener('click', closeLightbox);
+  btnPrev.addEventListener('click', () => showImage(currentIndex - 1));
+  btnNext.addEventListener('click', () => showImage(currentIndex + 1));
+
+  // Click the dark backdrop (but not the image itself) to close
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+    if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+  });
+}
+
+// Contact form submission — sends the message to our Worker's
+// /api/contact endpoint, which forwards it as an email via Resend.
+const contactForm = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const data = {
+      name: contactForm.name.value.trim(),
+      email: contactForm.email.value.trim(),
+      message: contactForm.message.value.trim(),
+    };
+
+    submitBtn.disabled = true;
+    formStatus.textContent = 'Šaljem...';
+    formStatus.className = 'form-status';
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const result = await res.json();
+
+      if (res.ok && result.ok) {
+        formStatus.textContent = 'Hvala! Vaš upit je poslan — javit ćemo se uskoro.';
+        formStatus.className = 'form-status form-status-success';
+        contactForm.reset();
+      } else {
+        formStatus.textContent = result.error || 'Slanje nije uspjelo. Pokušajte ponovno.';
+        formStatus.className = 'form-status form-status-error';
+      }
+    } catch (err) {
+      formStatus.textContent = 'Slanje nije uspjelo. Provjerite internetsku vezu i pokušajte ponovno.';
+      formStatus.className = 'form-status form-status-error';
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+}
