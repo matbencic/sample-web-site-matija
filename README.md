@@ -1,4 +1,4 @@
-# Lorena Fotografija
+# Atelier Lorena
 
 Web stranica fotografkinje Lorena, izrađena po uzoru na [phototales.hr](https://phototales.hr/).
 
@@ -23,7 +23,6 @@ pod točno ovim imenima i placeholderi će automatski nestati:
 | `images/usluga-novorodencad.jpg` | Kartica "Novorođenčad" | 1000×1250px |
 | `images/usluga-obitelj.jpg` | Kartica "Obitelj" | 1000×1250px |
 | `images/usluga-trudnice.jpg` | Kartica "Trudnoća" | 1000×1250px |
-| `images/lorena-portret.jpg` | Portret u sekciji "O meni" | 900×1100px |
 | `images/galerija-01.jpg` … `images/galerija-08.jpg` | Galerija (8 fotografija) | kvadratne, min. 800×800px |
 
 ## Uređivanje teksta
