@@ -214,15 +214,43 @@ section { padding: 5.5rem 0; }
 
 .hero .img-placeholder { min-height: 100%; }
 
+/* Hero photo collage — overlapping, slightly rotated photos */
+.hero-collage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-dark);
+}
+
+.collage-img {
+  position: absolute;
+  object-fit: cover;
+  background: var(--color-bg-alt);
+  border: 6px solid #fff;
+  border-radius: 4px;
+  box-shadow: 0 18px 38px rgba(20,16,12,0.4);
+}
+
+.collage-1 { top: 6%;  left: 4%;   width: 21%; height: 34%; transform: rotate(-7deg); z-index: 3; }
+.collage-2 { top: 8%;  right: 5%;  width: 19%; height: 30%; transform: rotate(6deg);  z-index: 2; }
+.collage-3 { bottom: 7%; left: 8%; width: 20%; height: 32%; transform: rotate(5deg);  z-index: 4; }
+.collage-4 { bottom: 10%; right: 9%; width: 21%; height: 33%; transform: rotate(-5deg); z-index: 2; }
+.collage-5 { top: 58%; left: 16%; width: 18%; height: 28%; transform: rotate(-4deg); z-index: 5; }
+.collage-6 { top: 60%; right: 16%; width: 17%; height: 27%; transform: rotate(7deg); z-index: 1; }
+
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(20,16,12,0.35) 0%, rgba(20,16,12,0.55) 100%);
+  z-index: 10;
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 50%, rgba(20,16,12,0.8) 0%, rgba(20,16,12,0.55) 55%, rgba(20,16,12,0.25) 100%),
+    linear-gradient(180deg, rgba(20,16,12,0.25) 0%, rgba(20,16,12,0.4) 100%);
 }
 
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 20;
   text-align: center;
   color: var(--color-light);
   padding: 0 1.5rem;
@@ -268,6 +296,27 @@ section { padding: 5.5rem 0; }
   color: var(--color-muted);
   font-size: 0.95rem;
 }
+
+/* ---------- About ---------- */
+.about {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 5.5rem 1.5rem;
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-img {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+.about-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.about-text p { color: var(--color-muted); }
+.about-text h2 { font-size: clamp(1.9rem, 3.5vw, 2.6rem); }
 
 /* ---------- CTA banner ---------- */
 .cta-banner {
@@ -387,6 +436,15 @@ section { padding: 5.5rem 0; }
 }
 .contact-info a { color: var(--color-accent); border-bottom: 1px solid var(--color-accent); }
 
+/* Contact section with no form — just centered info */
+.contact-grid.contact-info-only {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  max-width: 480px;
+}
+.contact-info-only .contact-info { text-align: center; }
+.contact-info-only .contact-info p { font-size: 1.05rem; }
+
 /* ---------- Footer ---------- */
 .site-footer {
   text-align: center;
@@ -399,9 +457,17 @@ section { padding: 5.5rem 0; }
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .services-grid { grid-template-columns: 1fr; }
+  .about { grid-template-columns: 1fr; }
   .reviews-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
   .contact-grid { grid-template-columns: 1fr; }
+
+  /* Fewer, larger collage photos on smaller screens */
+  .collage-5, .collage-6 { display: none; }
+  .collage-1 { width: 32%; height: 36%; top: 8%;  left: 4%; }
+  .collage-2 { width: 30%; height: 32%; top: 10%; right: 4%; }
+  .collage-3 { width: 32%; height: 36%; bottom: 8%;  left: 6%; }
+  .collage-4 { width: 32%; height: 34%; bottom: 10%; right: 6%; }
 
   .nav-toggle { display: flex; }
   .main-nav ul {
@@ -424,4 +490,10 @@ section { padding: 5.5rem 0; }
 @media (max-width: 520px) {
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
   section { padding: 4rem 0; }
+
+  /* Only 3 collage photos on very small screens, arranged around the edges */
+  .collage-4 { display: none; }
+  .collage-1 { width: 42%; height: 30%; top: 6%; left: 4%; }
+  .collage-2 { width: 40%; height: 28%; top: 8%; right: 4%; }
+  .collage-3 { width: 46%; height: 32%; bottom: 6%; left: 50%; transform: translateX(-50%) rotate(4deg); }
 }
