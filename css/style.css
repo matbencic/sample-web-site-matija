@@ -541,14 +541,27 @@ section { padding: 5.5rem 0; }
 }
 .contact-info a { color: var(--color-accent); border-bottom: 1px solid var(--color-accent); }
 
-/* Contact section with no form — just centered info */
+/* Contact section with no form — just centered info, laid out
+   horizontally (Studio / E-mail / Telefon / Instagram side by side) on
+   wider screens, and stacked on mobile. */
 .contact-grid.contact-info-only {
   grid-template-columns: 1fr;
   justify-items: center;
-  max-width: 480px;
+  max-width: none;
 }
-.contact-info-only .contact-info { text-align: center; }
-.contact-info-only .contact-info p { font-size: 1.05rem; }
+.contact-info-only .contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.5rem 3.5rem;
+  text-align: center;
+}
+.contact-info-only .contact-info p { margin-bottom: 0; font-size: 1.05rem; }
+
+@media (max-width: 900px) {
+  .contact-info-only .contact-info { flex-direction: column; align-items: center; gap: 1.75rem; }
+}
 
 /* ---------- Footer ---------- */
 .site-footer {
