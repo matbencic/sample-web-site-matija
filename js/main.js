@@ -55,6 +55,59 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
   });
 });
 
+// Gallery pagination — shows 12 photos per page on desktop/web,
+// 6 per page on mobile, with numbered page buttons (1, 2, 3, ...).
+const galleryGrid = document.getElementById('gallery-grid');
+const galleryPagination = document.getElementById('gallery-pagination');
+if (galleryGrid && galleryPagination) {
+  const galleryPageItems = Array.from(galleryGrid.querySelectorAll('.gallery-item'));
+  const mobileQuery = window.matchMedia('(max-width: 900px)');
+  let currentGalleryPage = 1;
+
+  function galleryPageSize() {
+    return mobileQuery.matches ? 6 : 12;
+  }
+
+  function renderGalleryPage(page) {
+    const pageSize = galleryPageSize();
+    const totalPages = Math.max(1, Math.ceil(galleryPageItems.length / pageSize));
+    currentGalleryPage = Math.min(Math.max(1, page), totalPages);
+
+    const start = (currentGalleryPage - 1) * pageSize;
+    const end = start + pageSize;
+    galleryPageItems.forEach((item, index) => {
+      item.style.display = (index >= start && index < end) ? '' : 'none';
+    });
+
+    renderGalleryPagination(totalPages);
+  }
+
+  function renderGalleryPagination(totalPages) {
+    galleryPagination.innerHTML = '';
+    if (totalPages <= 1) return;
+    for (let i = 1; i <= totalPages; i++) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'gallery-page-btn' + (i === currentGalleryPage ? ' active' : '');
+      btn.textContent = String(i);
+      btn.setAttribute('aria-label', `Stranica ${i}`);
+      btn.addEventListener('click', () => {
+        renderGalleryPage(i);
+        document.getElementById('galerija').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      galleryPagination.appendChild(btn);
+    }
+  }
+
+  renderGalleryPage(1);
+
+  let galleryResizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(galleryResizeTimer);
+    galleryResizeTimer = setTimeout(() => renderGalleryPage(1), 200);
+  });
+}
+
 // Gallery lightbox — click any gallery photo to see it uncropped,
 // full-size, with arrows to browse through the whole gallery.
 const galleryImgs = Array.from(document.querySelectorAll('.gallery-item img'));
